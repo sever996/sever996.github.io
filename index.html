@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let bigdang=new Date();
+    </script>
+    <style>
+        *{
+            font-size: 70px;
+            text-align: center;
+            font-style: italic;
+        }
+        header{
+            height: 15%;
+            background-color: aqua;
+        }
+        main{
+            height: 70%;
+            background-color: deepskyblue;
+        }
+        footer{
+            height: 15%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <header>Hello</header>
+    <main>World</main>
+    <footer>
+        !
+    </footer>
+    <script>
+        document.body.style.height=innerHeight -20+'px';
+        console.log(new Date()-bigdang +"ms");
+        let smalldang=new Date();
+        for(i=1;i<1e8;i++)
+            {}
+        console.log(new Date()-smalldang+"ms");
+    </script>
+</body>
+</html>
