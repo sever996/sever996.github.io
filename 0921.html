@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF8">
+    <meta name="viewport" content="width=devicewidth, initialscale=1.0">
     <title>Document</title>
     <script>
-        let bigdang=new Date();
+        
     </script>
     <style>
+        p{
+            border: solid 1px blue;
+        }
         *{
             font-size: 70px;
             text-align: center;
             font-style: italic;
-        }
-        p{
-            border: 1px solid pink;
         }
         header{
             height: 15%;
@@ -33,15 +33,37 @@
 <body>
     <header>Hello</header>
     <main>
-       <p id="word"></p>
-       <p id="pron"></p>
-       <p id="tran"></p>
+        <p id="word"></p>
+        <p id="pron"></p>
+        <p id="chinese"></p>
     </main>
     <footer>
         江西科技师范大学
     </footer>
 </body>
-    <script>
-            
-    </script>
+<script>
+    let strCET6='';
+letarrCET6=[];
+fetch('cet6.txt')
+.then(res => res.text())
+.then(txt => {
+    strCET6=txt;
+    arrCET6=strCET6.split('\r\n');
+    let rand=Math.floor(arrCET6.length*Math.random());
+    let cetWord=arrCET6[rand];
+    let begin=cetWord.indexOf('\t');
+    let end=cetWord.lastIndexOf('\t');
+    let word=cetWord.slice(0,begin);
+    let pron=cetWord.slice(begin+1,end);
+    let chinese=cetWord.slice(end+1);
+        select('#word').textContent=word;
+        select('#pron').textContent=pron;
+        select('#chinese').textContent=chinese;
+});
+
+function select(str){
+let dom= document.querySelector(str);
+return dom;
+}
+ </script>
 </html>
