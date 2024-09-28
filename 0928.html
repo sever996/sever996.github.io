@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF8">
+    <meta name="viewport" content="width=devicewidth, initialscale=1.0">
+    <title>Welcome</title>
+    <script>
+          let Model = {} ;
+        Model.cet6Str = '' ;
+        Model.CET6 = [] ;
+        Model.cetUrl = ['cet6.txt'];
+        for(let i=0; i<Model.cetUrl.length; i++){
+            fetch(Model.cetUrl[i])
+            .then(res => res.text())
+            .then(txt => {
+                Model.cet6Str += txt ;
+                IU.log('单词库：' + Model.cetUrl[i] + ' 加载成功!') ;       
+            });
+          } ;
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            box-sizing: borderbox;
+            font-size: 30px;
+        }
+        header{
+            height: 15%;
+            background-color: blueviolet;
+        }
+        main{
+            height: 60%;
+        }
+        nav{
+            height: 10%;
+        }
+        footer{
+            height: 15%;
+            background-color: brown;
+            color: white;
+        }
+        body{
+            height: 100vh;
+            background-color: aqua;
+            font-size: calc(0.5em+2vw);
+        }
+        p{
+            border: 1px solid burlywood;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        0928今天作业
+    </header>
+    <nav>
+        <button id="loadCet">读入单词</button>
+        <button id="randWord">随机单词</button>
+    </nav>
+    <main>
+        <p id="en"></p>
+        <p id="pr"></p>
+        <p id="cn"></p>
+    </main>
+    <footer>
+        江西科技师范大学
+    </footer>
+    <script>
+        let IU ={};
+        IU.log =function(s){
+            select('footer').textContent =s;
+        }
+        let cet6Str='';
+        let loadCet = select('button#loadCet');
+        let randWord= select('button#randWord');
+        loadCet.onclick=function(){
+        fetch('cet6.txt')
+        .then(res=>res.text())
+        .then(txt=>cet6Str=txt);
+        };
+        Model.CET6 = Model.cet6Str.split('\r\n') ;
+        if(Model.CET6.length < 5000){
+            IU.log("单词正在读入,Please wait!");
+        }else{
+            IU.log("已经读入了"+ Model.CET6.length + "单词!")
+        };
+        randWord.onclick=function(){
+        if(cet6Str.length==0){
+        let s='请先读入单词！';
+        select('footer').textContent=s;
+        }else{
+        let arr=cet6Str.split('\r\n');
+        console.log(arr);
+        let rand=Math.floor(Math.random()*arr.length);
+        let str=arr[rand];
+        console.log(str);
+        let begin=str.indexOf('\t');
+        let end=str.lastIndexOf('\t');
+        console.log('b:'+begin+'e:'+end);
+        let en=str.slice(0,begin);
+        let pr=str.slice(begin+1,end);
+        let cn=str.slice(end+1);
+        select('p#en').textContent=en;
+        select('p#pr').textContent=pr;
+        select('p#cn').textContent=cn;
+}
+};
+    function select(selector){
+    let dom=document.querySelector(selector);
+    return dom;
+}
+</script>
+</body>
+</html>
