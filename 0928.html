@@ -68,30 +68,30 @@
         江西科技师范大学
     </footer>
     <script>
-        let IU ={};
-        IU.log =function(s){
+        let UI ={};
+        UI.log =function(s){
             select('footer').textContent =s;
         }
-        let cet6Str='';
+        let cet6String='';
         let loadCet = select('button#loadCet');
         let randWord= select('button#randWord');
         loadCet.onclick=function(){
         fetch('cet6.txt')
         .then(res=>res.text())
-        .then(txt=>cet6Str=txt);
-        };
-        Model.CET6 = Model.cet6Str.split('\r\n') ;
+        .then(txt=>cet6String=txt);
+        Model.CET6 = Model.cet6String.split('\r\n') ;
         if(Model.CET6.length < 5000){
-            IU.log("单词正在读入,Please wait!");
+            UI.log("单词正在读入,Please wait!");
         }else{
-            IU.log("已经读入了"+ Model.CET6.length + "单词!")
+            UI.log("已经读入了"+ Model.CET6.length + "单词!")
+        };
         };
         randWord.onclick=function(){
-        if(cet6Str.length==0){
+        if(cet6String.length==0){
         let s='请先读入单词！';
         select('footer').textContent=s;
         }else{
-        let arr=cet6Str.split('\r\n');
+        let arr=cet6String.split('\r\n');
         console.log(arr);
         let rand=Math.floor(Math.random()*arr.length);
         let str=arr[rand];
@@ -105,6 +105,7 @@
         select('p#en').textContent=en;
         select('p#pr').textContent=pr;
         select('p#cn').textContent=cn;
+        UI.log("已随机生成新的单词");
 }
 };
     function select(selector){
