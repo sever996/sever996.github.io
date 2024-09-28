@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=devicewidth, initialscale=1.0">
     <title>Welcome</title>
     <script>
-          let Model = {} ;
-        Model.cet6Str = '' ;
+        let Model = {} ;
+        Model.cet6String = '' ;
         Model.CET6 = [] ;
         Model.cetUrl = ['cet6.txt'];
         for(let i=0; i<Model.cetUrl.length; i++){
             fetch(Model.cetUrl[i])
             .then(res => res.text())
             .then(txt => {
-                Model.cet6Str += txt ;
-                IU.log('单词库：' + Model.cetUrl[i] + ' 加载成功!') ;       
+                Model.cet6String += txt ;
+                UI.log('单词库：' + Model.cetUrl[i] + ' 加载成功!') ;       
             });
           } ;
     </script>
@@ -24,7 +24,7 @@
             padding: 0;
             text-align: center;
             box-sizing: borderbox;
-            font-size: 30px;
+            font-size: 40px;
         }
         header{
             height: 15%;
