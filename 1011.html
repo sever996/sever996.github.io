@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome to my CET APP</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            box-sizing: borderbox;
+            font-size: 70px;
+        }
+        header{
+            height: 15%;
+            background-color: blueviolet;
+        }
+        main{
+            height: 60%;
+        }
+        nav{
+            height: 10%;
+        }
+        footer{
+            height: 15%;
+            background-color: brown;
+            color: white;
+        }
+        body{
+            height: 100vh;
+            background-color: aqua;
+            font-size: calc(0.5em+2vw);
+        }
+        p{
+            border: 1px solid burlywood;
+        }
+    </style>
+    <script>
+        let Model = {} ; 
+        Model.cet6String = "a	/ei/	art.一(个);每一(个);(同类事物中)任一个\nabandon	/ə'bændən/	vt.离弃,丢弃;遗弃,抛弃;放弃\nabdomen	/æb'dəumen/	n.腹,下腹(胸部到腿部的部分)\nabatement	/ə'beitmənt/	n.减(免)税,打折扣,冲销\nabide	/ə'baid/	vi.(abode,abided)(by)遵守;坚持;vt.忍受,容忍\nability	/ə'biliti/	n.能力;本领;才能,才干;专门技能,天资\nable	/'eibl/	a.有(能力、时间、知识等)做某事,有本事的\nabnormal	/æb'nɔ:məl/	a.反常的,不正常的,不规则的\naboard	/ə'bɔ:d/	ad.&prep.在船(飞机、车)上;ad.上船(飞机、车)\nabolish	/ə'bɔliʃ/	vt.废除(法律、习惯等);取消\nabound	/ə'baund/	vi.大量存在;(~in,~with)充满,富于\nabout	/ə'baut/	ad.在周围;大约prep.关于;在周围a.准备\nabove	/ə'bʌv/	a.上述的ad.在上面,在前文prep.在..之上,高于\nabroad	/ə'brɔ:d/	ad.到国外,在国外;在传播,在流传\nabrupt	/ə'brʌpt/	a.突然的,出其不意的;(行为等)粗鲁无礼的\nabsence	/'æbsəns/	n.缺乏,不存在;缺席,不在场;缺席的时间\nabsent	/'æbsənt,æb'sent/	a.缺席的;缺乏的,不存在的;心不在焉的\nabsolute	/'æbsəlju:t/	a.绝对的,完全的;确实的,肯定的\nabsorb	/əb'sɔ:b,-'zɔ:b/	vt.吸收(水、光、蒸汽等）;使全神贯注;吞并/兼并\nabstract	/'æbstrækt/	a.抽象的n.摘要,文摘,梗概vt.提取;摘录要点" ;
+        Model.CET6 = [] ;
+      { 
+         let arr = Model.cet6String.split('\n') ;
+         for(let i=0; i< arr.length ; i++){
+             let s = arr[i] ;
+             let word = {} ;
+             let wordArr = s.split('\t') ;
+                 word.en = wordArr[0] ;
+                 word.pn = wordArr[1] ;
+                 word.cn = wordArr[2] ;
+             Model.CET6.push(word) ;    
+         }
+       }
+              
+    </script>
+</head>
+<body>
+    <header>
+      轻轻松松背单词——CET6
+    </header>
+    <nav>
+       <button id="randWord">随机单词</button>
+       <button id="firstWord">首个单词</button>
+       <button id="nextWord">下个单词</button>
+       <button id="lastWord">结尾单词</button>
+     </nav>
+    <main>
+      <p id="en">abandon</p>
+      <p id="pn">/ə'bændən/</p>
+      <p id="cn">vt.离弃,丢弃;遗弃,抛弃;放弃</p>
+    </main>
+    <footer>
+        江西科技师范大学
+    </footer>
+    <script>
+     let UI = {} ;
+      UI.log = function(s){
+       select('footer').textContent = s ;
+      } ;
+      let i=0;
+     UI.printWord = function(word){ 
+        select('p#en').textContent = word.en ;
+        select('p#pn').textContent = word.pn ;
+        select('p#cn').textContent = word.cn ;
+     } ;
+     select('button#firstWord').onclick = function(){
+          let CET6 =  Model.CET6 ;
+          let word = CET6[i] ;
+          i=1;
+          UI.printWord(word);
+          UI.log('你选中了第 1 个单词');
+       } ;
+    select('button#lastWord').onclick = function(){
+          let CET6 =  Model.CET6 ;
+          let word = CET6[CET6.length -1] ;
+          UI.printWord(word);
+          UI.log('你选中了最后一个单词');
+       } ;
+       select('button#randWord').onclick = function(){
+          let CET6 =  Model.CET6 ;
+          let rand = Math.floor( Math.random() * CET6.length );
+          let word = CET6[rand] ;
+          i=rand+1;
+          UI.printWord(word);
+          UI.log('你随机选中了第 '+(rand+1)+' 个单词');
+       } ;
+       select('button#nextWord').onclick = function(){
+        let CET6 =  Model.CET6 ;
+          let word = CET6[i] ;
+          i=i+1;
+          UI.printWord(word);
+          UI.log('你选中了第 '+(i)+' 个单词');
+          if(i==20){
+            UI.printWord(word);
+          UI.log('没有单词了');
+          }
+       } ;
+     function select(selector){
+        let dom = document.querySelector(selector) ;
+        return dom ;
+      }
+    </script>
+</body>
+</html>
