@@ -12,10 +12,10 @@ body {
 
 /* 头部样式 */
 header {
-    font-size: 2em;
-    height: 15%;
+    font-size: 30px;
+    height: 10%;
     position: relative;
-    align-content: center;
+    
     border-radius: 10px 10px 0 0; /* 给头部添加圆角边框，上左、上右圆角 */
 }
 
@@ -26,7 +26,7 @@ nav {
 }
 
 nav button {
-    font-size: 1.2em;
+    font-size: 2vw;
     border-radius: 5px; /* 给导航栏按钮添加圆角边框 */
 }
 
@@ -95,17 +95,17 @@ footer {
 span#level {
     display: block;
     position: absolute;
-    right: 20px;
+    right: 10px;
     top: 1px;
     color: blue;
-    font-size: 40px;
+    font-size: 25px;
 }
 
 p.cn {
     background-color: antiquewhite;
     cursor: pointer;
     font-size: 0.8em;
-    width: 850px;
+    width: auto;
     margin: 0 auto;
     margin-bottom: 0.2em;
     border-radius: 5px; 
@@ -124,12 +124,12 @@ p.cn.wrong {
 
 p.cn:hover {
     color: blue;
-    width: 1000px;
+    width: 200px;
 }
 
 p.cn:focus {
     color: blue;
-    width: 1000px;
+    width: 200px;
 }
 
 header span#response {
