@@ -3,43 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        let bigdang=new Date();
-    </script>
-    <style>
-        *{
-            font-size: 70px;
-            text-align: center;
-            font-style: italic;
-        }
-        header{
-            height: 15%;
-            background-color: aqua;
-        }
-        main{
-            height: 70%;
-            background-color: deepskyblue;
-        }
-        footer{
-            height: 15%;
-            background-color: aqua;
-        }
-    </style>
+    <title>轻松背单词--CET6</title>
 </head>
+<link rel="stylesheet" href="view.css">
+<script src="model.js">
+ </script>
 <body>
-    <header>Hello</header>
-    <main>World</main>
+    <header>
+        <p id="title"> 
+            CET6-轻轻松松背单词
+        </p>
+        <span id = 'response'>
+        </span>
+    </header>
+    <nav>
+        <button id="firstWord" class="small">开背单词</button>
+        <button id="nextWord" class="small">继续背词</button>
+        <button id="lastWord" class="small">最后单词</button>
+        <br>
+        <button id="saveWord" class="big">存储进度</button>
+        <button id="reviewWord" class="big">复习单词</button>
+    </nav>
+    <main>
+        <p id="en"></p>
+         <span id ='level'>难度：</span>
+        <p id="pn"></p>
+        <p id="cn1" class="cn"></p>
+        <p id="cn2" class="cn"></p>
+        <p id="cn3" class="cn"></p>
+        <p id="cn4" class="cn"></p>
+        <p id="cn5" class="cn"></p>
+       <br>
+    <p id="log"></p>    
+    </main>
     <footer>
-        !
+        江西科技师范大学 王璐旺
     </footer>
-    <script>
-        document.body.style.height=innerHeight -20+'px';
-        console.log(new Date()-bigdang +"ms");
-        let smalldang=new Date();
-        for(i=1;i<1e8;i++)
-            {}
-        console.log(new Date()-smalldang+"ms");
-    </script>
+    <form>
+        <br>
+        <br>
+        <p>
+            请先登录
+        </p>
+        <br>
+        <p>用户：<input type="text" name="user"/></p>
+        <p>密码：<input type="password" name="pass" /></p>
+        <br>
+        <button id = "signIn">
+           注册
+        </button>
+        <button id = "loginIn">
+           登录
+        </button>
+    </form>
+   <script src="controller.js">
+   </script>
 </body>
 </html>
