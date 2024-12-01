@@ -1,7 +1,7 @@
 //Model用于记录程序的数据和运行状态
     let Model = { 
         timerBegin : new Date() ,
-        numOfLearning : 25,
+        numOfLearning : 50,
         learning : [] ,
         learned : []
     } ;
@@ -112,7 +112,7 @@
   UI.footerLog = function(s){
     select('footer').textContent = s ;
     setTimeout(() => {
-        select('footer').textContent = "江西科技师范大学 李健宏 2024--2025" ;
+        select('footer').textContent = "江西科技师范大学 王璐旺 2024--2025" ;
     }, 3*1000);
   };
   UI.response = function(s){
